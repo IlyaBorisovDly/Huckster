@@ -2,20 +2,25 @@ package com.example.huckster
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.huckster.ui.theme.HucksterTheme
+import com.example.huckster.ui.theme.Orange
+import com.example.huckster.ui.theme.White
 
 @Composable
 fun Item() {
@@ -78,15 +83,8 @@ fun ItemInfo() {
                 .fillMaxSize()
                 .padding(top = 16.dp, start = 16.dp, end = 16.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text = "Nike Air Max 270 x Travis Scott", style = MaterialTheme.typography.h1)
-                Text(text = "100 000 $", style = MaterialTheme.typography.body1)
-            }
+            NameAndPrice("Nike Air Max 270 x Travis Scott", "45 000")
+
             Title("Описание")
             Description("Дизайн модели разработан по мотивам винтажной экипировки для туризма. Основой обуви служит пыльный кремовый текстиль, дополняемый нубуком и флисом.")
 
@@ -97,27 +95,23 @@ fun ItemInfo() {
             Description("Huckster является выдуманной торговой площадкой. Дважды подумайте прежде чем оплачивать товары, мы всё равно их не привезём")
 
             Spacer(Modifier.weight(1f))
-            
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 32.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom
-            ) {
-                Icon(painterResource(R.drawable.ic_add_to_favourite), "")
-                Spacer(Modifier.width(16.dp))
-                Button(
-                    modifier = Modifier
-                        .height(50.dp)
-                        .fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFFF6332), contentColor = Color.White),
-                    onClick = {}
-                ) {
-                    Text("Добавить в корзину", fontSize = 18.sp)
-                }
-            }
+
+            InteractionRow()
         }
+    }
+}
+
+@Composable
+fun NameAndPrice(name: String, price: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(text = name, style = MaterialTheme.typography.h1)
+        Text(text = "$price ₽", style = MaterialTheme.typography.body1)
     }
 }
 
@@ -137,6 +131,60 @@ fun Description(text: String) {
         style = MaterialTheme.typography.body1,
         modifier = Modifier.padding(bottom = 8.dp)
     )
+}
+
+@Composable
+fun InteractionRow() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 32.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Bottom
+    ) {
+        AddToFavouritesButton()
+        Spacer(Modifier.width(16.dp))
+        AddToCartButton()
+    }
+}
+
+@Composable
+fun AddToFavouritesButton(isFavourite: Boolean = false) {
+    val isFav = remember { mutableStateOf(isFavourite) }
+    val resource = remember { mutableStateOf(getResource(isFav.value)) }
+
+    Button(
+        modifier = Modifier
+            .width(50.dp)
+            .height(50.dp),
+        elevation = ButtonDefaults.elevation(0.dp),
+        colors = ButtonDefaults.buttonColors(backgroundColor = White),
+        contentPadding = PaddingValues(0.dp),
+        onClick = {
+            isFav.value = !isFav.value
+            resource.value = getResource(isFav.value)
+        }
+    ) {
+        Image(painterResource(resource.value), "Add to favourites")
+    }
+}
+
+private fun getResource(isFavourite: Boolean): Int {
+    return if (isFavourite) R.drawable.ic_add_to_favourite else R.drawable.ic_add_to_favourite_filled
+}
+
+@Composable
+fun AddToCartButton() {
+    Button(
+        modifier = Modifier
+            .height(50.dp)
+            .fillMaxWidth(),
+        elevation = ButtonDefaults.elevation(0.dp),
+        colors = ButtonDefaults.buttonColors(backgroundColor = Orange, contentColor = White),
+        onClick = {}
+    ) {
+        Text("Добавить в корзину", style = MaterialTheme.typography.h2) //fontSize = 18.sp)
+    }
 }
 
 @Preview
