@@ -3,7 +3,9 @@ package com.example.huckster
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -77,35 +79,31 @@ fun ItemInfo() {
                 .padding(top = 16.dp, start = 16.dp, end = 16.dp)
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Nike Air Max 270 x Travis Scott")
-                Text(text = "100 000 $")
+                Text(text = "Nike Air Max 270 x Travis Scott", style = MaterialTheme.typography.h1)
+                Text(text = "100 000 $", style = MaterialTheme.typography.body1)
             }
+            Title("Описание")
+            Description("Дизайн модели разработан по мотивам винтажной экипировки для туризма. Основой обуви служит пыльный кремовый текстиль, дополняемый нубуком и флисом.")
 
-            Spacer(Modifier.height(8.dp))
-            Text("Описание")
-            Spacer(Modifier.height(8.dp))
-            Text("Дизайн модели разработан по мотивам винтажной экипировки для туризма и представляет из себя искусственно состаренный образ в паре с передовыми технологиями Nike. Основой обуви служит пыльный кремовый текстиль, дополняемый нубуком и флисом.")
+            Title("Состав")
+            Description("• Нейлон\n• Пластик\n• Полиэстер\n• Нубук\n• Термопластичный полиуритан")
 
-            Spacer(Modifier.height(8.dp))
-            Text("Состав")
-            Spacer(Modifier.height(8.dp))
-            Text("Нейлон\nПластик\nПолиэстер\nНубук\nТермопластичный полиуритан")
-
-            Spacer(Modifier.height(8.dp))
-            Text("Доставка и оплата")
-            Spacer(Modifier.height(8.dp))
-            Text("Huckster является выдуманной торговой площадкой. Дважды подумайте прежде чем оплачивать товары, мы всё равно их не привезём")
+            Title("Доставка и оплата")
+            Description("Huckster является выдуманной торговой площадкой. Дважды подумайте прежде чем оплачивать товары, мы всё равно их не привезём")
 
             Spacer(Modifier.weight(1f))
-
+            
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 32.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Bottom
             ) {
                 Icon(painterResource(R.drawable.ic_add_to_favourite), "")
                 Spacer(Modifier.width(16.dp))
@@ -121,6 +119,24 @@ fun ItemInfo() {
             }
         }
     }
+}
+
+@Composable
+fun Title(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.h2,
+        modifier = Modifier.padding(bottom = 8.dp)
+    )
+}
+
+@Composable
+fun Description(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.body1,
+        modifier = Modifier.padding(bottom = 8.dp)
+    )
 }
 
 @Preview
