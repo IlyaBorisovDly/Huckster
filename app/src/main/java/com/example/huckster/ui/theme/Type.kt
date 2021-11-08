@@ -18,10 +18,22 @@ val Typography = Typography(
     h1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 16.sp
     ),
 
     h2 = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp
+    ),
+
+    subtitle1 = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 18.sp
+    ),
+
+    subtitle2 = TextStyle(
         fontFamily = OpenSans,
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp

@@ -7,6 +7,30 @@ import org.json.JSONObject
 
 class JsonReader(private val application: Application) {
 
+    fun getItemByName(itemName: String): Item? {
+        val file = application.assets.open("items.json")
+        val text = file.bufferedReader().use { it.readText() }
+        val array = JSONArray(text)
+
+        for (i in 0 until array.length()) {
+            val jsonObject = JSONObject(array[i].toString())
+
+            if (jsonObject.get("name") == itemName) {
+                val id = jsonObject.getInt("id")
+                val name = jsonObject.getString("name")
+                val price = jsonObject.getInt("price")
+                val description = jsonObject.getString("description")
+
+                val compositionJsonArray = jsonObject.getJSONArray("composition")
+                val composition = jsonArrayToList(compositionJsonArray)
+
+                return Item(name, getImageById(id), price, description, composition)
+            }
+        }
+
+        return null
+    }
+
     fun getAllItems(): List<Item> {
         val resultList = mutableListOf<Item>()
 
@@ -21,13 +45,26 @@ class JsonReader(private val application: Application) {
             val name = jsonObject.getString("name")
             val price = jsonObject.getInt("price")
             val description = jsonObject.getString("description")
-            val composition = jsonObject.getString("composition")
+
+            val compositionJsonArray = jsonObject.getJSONArray("composition")
+            val composition = jsonArrayToList(compositionJsonArray)
 
             val item = Item(name, getImageById(id), price, description, composition)
             resultList.add(item)
         }
 
         return resultList
+    }
+
+    private fun jsonArrayToList(array: JSONArray): List<String> {
+        val list = mutableListOf<String>()
+
+        for (i in 0 until array.length()) {
+            val element = array[i].toString()
+            list.add(element)
+        }
+
+        return list
     }
 
     private fun getImageById(id: Int): Int {

@@ -13,26 +13,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.huckster.ui.theme.HucksterTheme
+import androidx.navigation.NavController
+import com.example.huckster.model.Item
 import com.example.huckster.ui.theme.Orange
 import com.example.huckster.ui.theme.White
 
 @Composable
-fun Item() {
+fun ItemScreen(navController: NavController, item: Item) {
     Column {
-        TopBar()
+        TopBar(navController)
         Column(Modifier.verticalScroll(rememberScrollState())
         ) {
-            ItemImage()
-            ItemInfo()
+            ItemImage(item.image)
+            ItemInfo(item)
         }
     }
 }
 
 @Composable
-fun TopBar() {
+private fun TopBar(navController: NavController) {
     val offset = 1.dp
 
     TopAppBar(
@@ -41,7 +41,7 @@ fun TopBar() {
         title = {},
         backgroundColor = Color.White,
         navigationIcon = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = { navController.popBackStack() }) {
                 Icon(
                     painterResource(R.drawable.ic_button_back),
                     contentDescription = ""
@@ -58,7 +58,7 @@ fun TopBar() {
 }
 
 @Composable
-fun ItemImage() {
+fun ItemImage(image: Int) {
     Box(
         Modifier
             .fillMaxWidth()
@@ -67,14 +67,14 @@ fun ItemImage() {
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.img_nike_x_travis),
+            painter = painterResource(image),
             contentDescription = "Item image",
         )
     }
 }
 
 @Composable
-fun ItemInfo() {
+fun ItemInfo(item: Item) {
     Card(
         modifier = Modifier.fillMaxSize(),
         shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
@@ -85,13 +85,13 @@ fun ItemInfo() {
                 .fillMaxSize()
                 .padding(top = 16.dp, start = 16.dp, end = 16.dp)
         ) {
-            NameAndPrice("Nike Air Max 270 x Travis Scott", "45 000")
+            NameAndPrice(item.name, item.getPrice())
 
             Title("Описание")
-            Description("Дизайн модели разработан по мотивам винтажной экипировки для туризма. Основой обуви служит пыльный кремовый текстиль, дополняемый нубуком и флисом.")
+            Description(item.description)
 
             Title("Состав")
-            Description("• Нейлон\n• Пластик\n• Полиэстер\n• Нубук\n• Термопластичный полиуритан")
+            Description(item.getComposition())
 
             Title("Доставка и оплата")
             Description("Huckster является выдуманной торговой площадкой. Дважды подумайте прежде чем оплачивать товары, мы всё равно их не привезём")
@@ -111,7 +111,7 @@ fun NameAndPrice(name: String, price: String) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(text = name, style = MaterialTheme.typography.h1)
-        Text(text = "$price ₽", style = MaterialTheme.typography.body1)
+        Text(text = price, style = MaterialTheme.typography.body1)
     }
 }
 
@@ -184,15 +184,5 @@ fun AddToCartButton() {
         onClick = {}
     ) {
         Text("Добавить в корзину", style = MaterialTheme.typography.h2)
-    }
-}
-
-@Preview
-@Composable
-fun ItemPreview() {
-    HucksterTheme {
-        Surface(Modifier.fillMaxSize()) {
-            Item()
-        }
     }
 }
