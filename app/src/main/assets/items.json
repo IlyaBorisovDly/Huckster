@@ -1,62 +1,6 @@
 [
 	{
 		"id" : 1,
-		"name" : "Air Max 270",
-		"author" : "Nike x Travis Scott",
-		"price" : 100000,
-		"description" : "Дизайн модели разработан по мотивам винтажной экипировки для туризма. Основой обуви служит пыльный кремовый текстиль, дополняемый нубуком и флисом.",
-		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
-	},
-	{
-		"id" : 2,
-		"name" : "Cortez Basic Slip",
-		"author" : "Nike x Kendrick Lamar",
-		"price" : 35000,
-		"description" : "",
-		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
-	},
-	{
-		"id" : 3,
-		"name" : "Flashtrek",
-		"author" : "Gucci",
-		"price" : 100000,
-		"description" : "",
-		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
-	},
-	{
-		"id" : 4,
-		"name" : "React Element 87",
-		"author" : "Nike x Undercover",
-		"price" : 80000,
-		"description" : "",
-		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
-	},
-	{
-		"id" : 5,
-		"name" : "Air Max 97",
-		"author" : "Nike x Wotherspoon",
-		"price" : 300000,
-		"description" : "",
-		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
-	},
-	{
-		"id" : 6,
-		"name" : "Free Tr 3",
-		"author" : "Nike",
-		"price" : 60000,
-		"description" : "",
-		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
-	},
-	{
-		"id" : 7,
-		"name" : "Blazer Mid 77",
-		"author" : "Nike",
-		"price" : 15000,
-		"description" : "",
-		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
-	},
-	{
-		"id" : 8,
 		"name" : "Track",
 		"author" : "Balenciaga",
 		"price" : 75000,
@@ -64,7 +8,23 @@
 		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
 	},
 	{
-		"id" : 9,
+		"id" : 2,
+		"name" : "Free Tr 3",
+		"author" : "Nike",
+		"price" : 60000,
+		"description" : "",
+		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
+	},
+	{
+		"id" : 3,
+		"name" : "Air Max 270",
+		"author" : "Nike x Travis Scott",
+		"price" : 100000,
+		"description" : "Дизайн модели разработан по мотивам винтажной экипировки для туризма. Основой обуви служит пыльный кремовый текстиль, дополняемый нубуком и флисом.",
+		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
+	},
+	{
+		"id" : 4,
 		"name" : "Foam Runner",
 		"author" : "Adidas YEEZY",
 		"price" : 90000,
@@ -72,7 +32,7 @@
 		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
 	},
 	{
-		"id" : 10,
+		"id" : 5,
 		"name" : "Fusion",
 		"author" : "Maison Margiela",
 		"price" : 180000,
@@ -80,20 +40,59 @@
 		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
 	},
 	{
-		"id" : 11,
-		"name" : "One Star",
-		"author" : "Converse x Golf le Fleur",
-		"price" : 23000,
+		"id" : 6,
+		"name" : "Cortez Basic Slip",
+		"author" : "Nike x Kendrick Lamar",
+		"price" : 35000,
 		"description" : "",
 		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
 	},
 	{
-		"id" : 12,
+		"id" : 7,
 		"name" : "Chuck 70",
 		"author" : "Converse x CDG",
 		"price" : 12000,
 		"description" : "",
 		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
+	},
+	{
+		"id" : 8,
+		"name" : "React Element 87",
+		"author" : "Nike x Undercover",
+		"price" : 80000,
+		"description" : "",
+		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
+	},
+	{
+		"id" : 9,
+		"name" : "Air Max 97",
+		"author" : "Nike x Wotherspoon",
+		"price" : 300000,
+		"description" : "",
+		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
+	},
+	{
+		"id" : 10,
+		"name" : "Flashtrek",
+		"author" : "Gucci",
+		"price" : 100000,
+		"description" : "",
+		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
+	},
+	{
+		"id" : 11,
+		"name" : "Blazer Mid 77",
+		"author" : "Nike",
+		"price" : 15000,
+		"description" : "",
+		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
+	},
+	{
+		"id" : 12,
+		"name" : "One Star",
+		"author" : "Converse x Golf le Fleur",
+		"price" : 23000,
+		"description" : "",
+		"composition" : ["Нейлон", "Пластик", "Полиэстер", "Нубук", "Термопластичный полиуритан"]
 	}
-
 ]

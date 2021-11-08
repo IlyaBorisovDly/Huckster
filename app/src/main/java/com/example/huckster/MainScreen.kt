@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,7 +17,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.huckster.model.Item
-import com.example.huckster.ui.theme.Black
 import com.example.huckster.ui.theme.Gray
 
 @ExperimentalMaterialApi
@@ -27,7 +25,10 @@ import com.example.huckster.ui.theme.Gray
 fun MainScreen(navController: NavController, itemsList: List<Item>) {
     Column {
         TopBar()
-        LazyVerticalGrid(modifier = Modifier.fillMaxSize(), cells = GridCells.Fixed(2)) {
+        LazyVerticalGrid(
+            modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp),
+            cells = GridCells.Fixed(2)
+        ) {
             items(items = itemsList, itemContent = { item ->
                 ItemCard(navController, item)
             } )
@@ -66,10 +67,9 @@ private fun TopBar() {
 private fun ItemCard(navController: NavController, item: Item) {
     Card(
         modifier = Modifier
-            .width(50.dp)
             .height(250.dp)
-            .padding(8.dp)
-            .border(BorderStroke(0.5.dp, Gray), RoundedCornerShape(8.dp)),
+            .padding(horizontal = 4.dp, vertical = 8.dp)
+            .border(BorderStroke(0.3.dp, Gray), MaterialTheme.shapes.medium),
         elevation = 0.dp,
         onClick = {
             navController.navigate(Screen.SingleItem.createRoute(item.name))

@@ -3,7 +3,6 @@ package com.example.huckster
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -77,7 +76,7 @@ fun ItemImage(image: Int) {
 fun ItemInfo(item: Item) {
     Card(
         modifier = Modifier.fillMaxSize(),
-        shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
+        shape = MaterialTheme.shapes.large,
         elevation = 10.dp
     ) {
         Column(
