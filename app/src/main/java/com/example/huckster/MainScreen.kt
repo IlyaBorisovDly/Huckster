@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.huckster.model.Item
 import com.example.huckster.ui.theme.Black
+import com.example.huckster.ui.theme.Gray
 
 @ExperimentalMaterialApi
 @ExperimentalFoundationApi
@@ -41,7 +42,7 @@ private fun TopBar() {
     TopAppBar(
         modifier = Modifier.padding(bottom = offset),
         elevation = offset,
-        title = {},
+        title = { Text(text = "Huckster", style = MaterialTheme.typography.h1) },
         backgroundColor = Color.White,
         navigationIcon = {
             IconButton(onClick = {}) {
@@ -68,10 +69,10 @@ private fun ItemCard(navController: NavController, item: Item) {
             .width(50.dp)
             .height(250.dp)
             .padding(8.dp)
-            .border(BorderStroke(0.5.dp, Black), RoundedCornerShape(8.dp)),
+            .border(BorderStroke(0.5.dp, Gray), RoundedCornerShape(8.dp)),
         elevation = 0.dp,
         onClick = {
-            navController.navigate(Screen.Product.createRoute(item.name))
+            navController.navigate(Screen.SingleItem.createRoute(item.name))
         }
     ) {
         Column(
@@ -90,8 +91,13 @@ private fun ItemCard(navController: NavController, item: Item) {
             )
 
             Spacer(Modifier.weight(1f))
-            Text(item.name, style = MaterialTheme.typography.body1)
-            Text(item.getPrice(), style = MaterialTheme.typography.body1)
+            Text(item.name, style = MaterialTheme.typography.subtitle1)
+            Text(item.author, style = MaterialTheme.typography.caption)
+            Text(
+                text = item.getPrice(),
+                style = MaterialTheme.typography.subtitle2,
+                modifier = Modifier.padding(top = 4.dp)
+            )
         }
     }
 }

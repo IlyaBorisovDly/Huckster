@@ -1,16 +1,15 @@
 package com.example.huckster
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.huckster.model.Item
 import com.example.huckster.model.JsonReader
 import com.example.huckster.ui.theme.HucksterTheme
 
@@ -39,7 +38,7 @@ class AppActivity : ComponentActivity() {
             composable(Screen.Main.route) {
                 MainScreen(navController, itemsList)
             }
-            composable(Screen.Product.route) { backStackEntry ->
+            composable(Screen.SingleItem.route) { backStackEntry ->
                 val name = backStackEntry.arguments?.getString("name")
                 val jsonReader = JsonReader(application)
 

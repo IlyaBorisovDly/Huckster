@@ -2,6 +2,7 @@ package com.example.huckster.model
 
 data class Item(
     val name: String,
+    val author: String,
     val image: Int,
     val price: Int,
     val description: String,

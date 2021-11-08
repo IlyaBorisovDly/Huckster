@@ -18,13 +18,14 @@ class JsonReader(private val application: Application) {
             if (jsonObject.get("name") == itemName) {
                 val id = jsonObject.getInt("id")
                 val name = jsonObject.getString("name")
+                val author = jsonObject.getString("author")
                 val price = jsonObject.getInt("price")
                 val description = jsonObject.getString("description")
 
                 val compositionJsonArray = jsonObject.getJSONArray("composition")
                 val composition = jsonArrayToList(compositionJsonArray)
 
-                return Item(name, getImageById(id), price, description, composition)
+                return Item(name, author, getImageById(id), price, description, composition)
             }
         }
 
@@ -43,13 +44,14 @@ class JsonReader(private val application: Application) {
 
             val id = jsonObject.getInt("id")
             val name = jsonObject.getString("name")
+            val author = jsonObject.getString("author")
             val price = jsonObject.getInt("price")
             val description = jsonObject.getString("description")
 
             val compositionJsonArray = jsonObject.getJSONArray("composition")
             val composition = jsonArrayToList(compositionJsonArray)
 
-            val item = Item(name, getImageById(id), price, description, composition)
+            val item = Item(name, author, getImageById(id), price, description, composition)
             resultList.add(item)
         }
 

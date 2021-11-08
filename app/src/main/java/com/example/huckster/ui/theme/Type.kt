@@ -16,7 +16,7 @@ val OpenSans = FontFamily(
 
 val Typography = Typography(
     h1 = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = OpenSans,
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp
     ),
@@ -30,13 +30,20 @@ val Typography = Typography(
     subtitle1 = TextStyle(
         fontFamily = OpenSans,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 18.sp
+        fontSize = 16.sp
     ),
 
     subtitle2 = TextStyle(
         fontFamily = OpenSans,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 16.sp
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
+    ),
+
+    caption = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.Normal,
+        color = Gray,
+        fontSize = 14.sp
     ),
 
     body1 = TextStyle(

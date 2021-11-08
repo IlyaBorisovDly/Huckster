@@ -85,7 +85,7 @@ fun ItemInfo(item: Item) {
                 .fillMaxSize()
                 .padding(top = 16.dp, start = 16.dp, end = 16.dp)
         ) {
-            NameAndPrice(item.name, item.getPrice())
+            TitleAndPrice(item.name, item.author, item.getPrice())
 
             Title("Описание")
             Description(item.description)
@@ -94,7 +94,8 @@ fun ItemInfo(item: Item) {
             Description(item.getComposition())
 
             Title("Доставка и оплата")
-            Description("Huckster является выдуманной торговой площадкой. Дважды подумайте прежде чем оплачивать товары, мы всё равно их не привезём")
+            Description("Huckster является выдуманной торговой площадкой. " +
+                    "Дважды подумайте прежде чем оплачивать товары, мы всё равно их не привезём")
 
             InteractionRow()
         }
@@ -102,7 +103,7 @@ fun ItemInfo(item: Item) {
 }
 
 @Composable
-fun NameAndPrice(name: String, price: String) {
+fun TitleAndPrice(name: String, author: String, price: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -110,7 +111,11 @@ fun NameAndPrice(name: String, price: String) {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = name, style = MaterialTheme.typography.h1)
+        Column {
+            Text(text = name, style = MaterialTheme.typography.h1)
+            Text(text = author, style = MaterialTheme.typography.caption)
+        }
+
         Text(text = price, style = MaterialTheme.typography.body1)
     }
 }
