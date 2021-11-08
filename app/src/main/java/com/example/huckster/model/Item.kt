@@ -16,7 +16,7 @@ data class Item(
                 append(it)
                 appendLine()
             }
-        }
+        }.trim()
 
         return text
     }
