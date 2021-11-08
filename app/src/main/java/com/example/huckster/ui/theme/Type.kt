@@ -15,6 +15,7 @@ val OpenSans = FontFamily(
 )
 
 val Typography = Typography(
+
     h1 = TextStyle(
         fontFamily = OpenSans,
         fontWeight = FontWeight.Bold,

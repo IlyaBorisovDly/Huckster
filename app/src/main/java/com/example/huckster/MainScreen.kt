@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.huckster.model.Item
@@ -43,13 +44,13 @@ private fun TopBar() {
     TopAppBar(
         modifier = Modifier.padding(bottom = offset),
         elevation = offset,
-        title = { Text(text = "Huckster", style = MaterialTheme.typography.h1) },
+        title = {},
         backgroundColor = Color.White,
         navigationIcon = {
             IconButton(onClick = {}) {
                 Icon(
                     painterResource(R.drawable.ic_button_grid),
-                    contentDescription = ""
+                    contentDescription = "Open navigation drawer"
                 )
             }
         },
@@ -87,7 +88,7 @@ private fun ItemCard(navController: NavController, item: Item) {
                     .padding(vertical = 8.dp)
                     .align(Alignment.CenterHorizontally),
                 painter = painterResource(item.image),
-                contentDescription = ""
+                contentDescription = "Sneaker image"
             )
 
             Spacer(Modifier.weight(1f))
